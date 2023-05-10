@@ -9,8 +9,12 @@ app.use("/", (req, res) => {
             console.log("File read failed:", err);
             return;
         }
-        const jsonData = JSON.parse(jsonString);
-        res.json(jsonData)
+        try{
+            const jsonData = JSON.parse(jsonString);
+            res.json(jsonData)
+        }catch{
+            console.log("Error parsing JSON string:", err);
+        }
     });
 })
 app.listen(port, () => {
