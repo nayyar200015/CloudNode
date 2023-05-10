@@ -9,13 +9,21 @@ app.use("/", (req, res) => {
             console.log("File read failed:", err);
             return;
         }
-        try{
+        try {
             const jsonData = JSON.parse(jsonString);
             res.json(jsonData)
-        }catch{
+        } catch (err) {
             console.log("Error parsing JSON string:", err);
+            return;
         }
     });
+    // try {
+    //     const jsonString = fs.readFileSync('./members.json');
+    //     const jsonData = JSON.parse(jsonString);
+    // } catch (err) {
+    //     console.log("Error parsing JSON string:", err);
+    //     return;
+    // }
 })
 app.listen(port, () => {
     console.log(`listening at port ${port}`)
