@@ -18,7 +18,7 @@ app.use("/", (req, res) => {
     //     }
     // });
     try {
-        const jsonString = fs.readFileSync('./members.json');
+        const jsonString = fs.readFileSync('members.json');
         const jsonData = JSON.parse(jsonString);
         res.json(jsonData)
     } catch (err) {
